@@ -39,6 +39,7 @@ public class UserService implements UserDetailsService{
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setAuthorities("usr");
     userRepository.save(user);
+    System.out.println(user.getPassword());
 
     JSONObject userJsonObject = new JSONObject();
     userJsonObject.put("phone", user.getUsername());

@@ -18,6 +18,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
 
@@ -33,7 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("/user/profile-info").hasAuthority("usr")
-                                .requestMatchers("/user/username/**").hasAuthority("svc")
+                                .requestMatchers("/user/username/**").hasAnyAuthority( "svc")
                                 .requestMatchers("/**").permitAll())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
